@@ -1,7 +1,6 @@
 jQuery(document).ready( function($){
     "use strict";
 
-
     var $body = $('body'),
         $add_to_cart_el = $('.add-request-quote-button'),
         $remove_item = $('.yith-ywraq-item-remove');

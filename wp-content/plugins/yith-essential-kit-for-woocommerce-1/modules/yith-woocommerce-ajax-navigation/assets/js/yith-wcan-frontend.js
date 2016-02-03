@@ -233,6 +233,8 @@ jQuery(function ($) {
     $(yith_wcan.container).wrap('<div class="yit-wcan-container"></div>');
     $('.woocommerce-info').wrap('<div class="yit-wcan-container"></div>');
 
+    $(document).trigger( 'yith-wcan-wrapped' );
+
     $(document).on('click', '.yith-wcan a', function (e) {
         $(this).yith_wcan_ajax_filters(e, this);
     });

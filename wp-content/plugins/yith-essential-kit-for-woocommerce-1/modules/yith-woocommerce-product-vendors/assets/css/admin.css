@@ -492,8 +492,39 @@ span.vacation-date-field {
     display: none;
 }
 
+#wpwrap h2.nav-tab-wrapper , #wpbody-content h2.nav-tab-wrapper {
+    border-bottom: 1px solid #ccc;
+}
+
+#s2id_yith_vendor_admins{
+    width: 40%;
+}
+
+.vendor_super_user #s2id_yith_vendor_admins,
+.vendor_super_user #s2id_key_user {
+    width: 95%;
+}
+
+.add-ons-coming-soon{
+    display: inline-block;
+    padding: 2px 5px;
+    background: #750202;
+    font-weight: bold;
+    font-size: 12px;
+    color: white;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
 @media (max-width: 1200px) {
     #vendor-details .form-field textarea:not(.wp-editor-area) {
         width: auto;
+    }
+}
+
+@media screen and (max-width: 782px) {
+    #s2id_yith_vendor_admins,
+    #vendor-details input[type=text] {
+        width: 100%;
     }
 }

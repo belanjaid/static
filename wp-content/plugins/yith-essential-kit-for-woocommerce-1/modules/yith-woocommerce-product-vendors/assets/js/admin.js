@@ -15,7 +15,7 @@
                 }
             },
 
-            value       = get_value( type );
+            value = get_value( type );
 
         var disable_opt = function(){
                 disable.css('opacity', '0.3');
@@ -47,6 +47,8 @@
                 disable_opt();
             }
         });
+
+        main_option.add( $(dep)).trigger( 'yith_wcmv_after_option_deps' );
     }
 
     var button = $('#yith_wpv_vendors_skip_review_for_all'),
@@ -73,7 +75,16 @@
         return confirm( yith_vendors.warnPay );
     });
 
+    //PayPal Standard Fix
+    var paypal_service = $('#payment_gateway'),
+        payment_method = $('#payment_method'),
+        paypal_deps = function(){
+            if( paypal_service.val() == 'standard' ){
+                payment_method.val( 'manual').trigger('change');
+            }
+        };
 
+    paypal_service.on( 'change', paypal_deps );
 
     //Vendors options deps
     var vendor_name_style   = $('#yith_wpv_vendor_name_style'),
@@ -87,8 +98,11 @@
     vendor_order_refund.yith_wpv_option_deps( '#yith_wpv_vendors_option_order_synchronization', 'checkbox', undefined, false );
     vendor_order_refund.yith_wpv_option_deps( '#yith_wpv_vendors_option_order_refund_synchronization', 'checkbox', undefined, false );
     vendor_order_refund.yith_wpv_option_deps( '#yith_wpv_vendors_option_order_hide_customer', 'checkbox', undefined, false );
+    vendor_order_refund.yith_wpv_option_deps( '#yith_wpv_vendors_option_order_hide_payment', 'checkbox', undefined, false );
     $('#yith_vendors_show_gravatar_image').yith_wpv_option_deps( '#yith_vendors_gravatar_image_size', 'select', 'disabled', false );
     $('#yith_wpv_vendors_option_editor_management').yith_wpv_option_deps( '#yith_wpv_vendors_option_editor_media', 'checkbox', undefined, false );
+    paypal_service.yith_wpv_option_deps( payment_method, 'select', 'standard', true );
+    payment_method.yith_wpv_option_deps( '#payment_minimum_withdrawals', 'select', 'manual', true );
 
     // Vendor taxonomy table
     var tax_table = $( '#the-list');
